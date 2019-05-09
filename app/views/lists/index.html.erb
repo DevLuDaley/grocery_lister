@@ -1,0 +1,19 @@
+<body class="learn-bar">
+    <header class="header">
+        <h1>Your Lists</h1>
+        <input class="new-item" placeholder="make a new list?" autofocus="">
+    </header>
+    
+    
+    
+    <section class="grocerylisterapp">
+        <ul class="item-list">
+                <% @lists.each do |display| %>
+                <li>
+                    <div class="view">
+                            <label><a href=""#><%= display.name %></a></label>
+                    </div>
+                                           <% end %>
+                </li>
+            </ul>
+    </section>

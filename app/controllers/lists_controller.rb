@@ -14,6 +14,18 @@ class ListsController < ApplicationController
   end
 
   def create
-#raise params.inspect      
+#raise params.inspect
+    @list = List.new
+    @list.name = params[:list][:name]
+    @list.save
+#50th
+    redirect_to list_path(@list)
+  end
+
+  #mass assignment
+
+  def list_params
+    params.reqquire(:list).permit(:name)
+      
   end
 end

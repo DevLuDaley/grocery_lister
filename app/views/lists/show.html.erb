@@ -1,14 +1,19 @@
 <body class="learn-bar">
     <header class="header">
         <h1><%= @list.name%></h1>
-        <input class="new-item" placeholder="add an item..." autofocus="">
+    <%= form_for([@list, @item]) do |f| %>
+    <%= f.text_field :description, :class => "new-item" %>
+    <%= f.submit :style => "display: none" %>
+    <%  end %>
     </header>
     <section class="grocerylisterapp">
         <ul class="item-list">
+            <% @list.items.each do |item| %>
                 <li>
                     <div class="view">
-                            <label>[]Cookies</label>
-                    </div>
+                            <label> <%= item.description %></label>
+                        </div>
+                        <% end %>
                 </li>
             </ul>
     </section>

@@ -1,0 +1,26 @@
+<section class="grocerylisterapp">
+    <header class="header">
+        <h1>Your Lists</h1>
+      <%= form_for(@list) do |f| %>
+      <%= f.text_field :name, :class => "new-item" %>
+      <%= f.submit :style => "display: none" %>
+         <%  end %>
+</form>
+    </header>
+    <section class="main">
+        <input class="toggle-all" type ="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul class="item-list">
+            <% @lists.each do |display| %>
+            <li>
+                <div class="view">
+                    <label><%= link_to display.name, list_path(display) %></label>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </section>
+         <footer class="footer">
+         </footer>
+</section>
+

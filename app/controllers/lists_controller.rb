@@ -11,6 +11,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @item = @list.items.build
   end
 
   def create
@@ -25,7 +26,7 @@ class ListsController < ApplicationController
   #mass assignment
 
   def list_params
-    params.reqquire(:list).permit(:name)
+    params.require(:list).permit(:name)
       
   end
 end

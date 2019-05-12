@@ -2,8 +2,17 @@
     <header class="header">
         <h1>Your Lists</h1>
       <%= form_for(@list) do |f| %>
-      <%= f.text_field :name, :class => "new-item" %>
+    <% @list.errors[:name].any? %>
+      <%= f.text_field :name, :class => "new-item", :placeholder => "create new list..." %>
+     
       <%= f.submit :style => "display: none" %>
+
+    <ul>
+        <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+    </div>
          <%  end %>
 </form>
     </header>

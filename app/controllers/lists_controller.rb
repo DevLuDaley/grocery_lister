@@ -19,7 +19,8 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     #@list.name = params[:list][:name]
     if @list.save
-      redirect_to list_path(@list) #50th
+      redirect_to list_url(@list) #50th
+#      redirect_to list_path(@list) #50th
     else
       @lists = List.all
       render :index
@@ -27,7 +28,7 @@ class ListsController < ApplicationController
   end
 
   #mass assignment
-
+private
   def list_params
     params.require(:list).permit(:name)
       

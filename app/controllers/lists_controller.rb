@@ -16,11 +16,14 @@ class ListsController < ApplicationController
 
   def create
 #raise params.inspect
-    @list = List.new
-    @list.name = params[:list][:name]
-    @list.save
-#50th
-    redirect_to list_path(@list)
+    @list = List.new(list_params)
+    #@list.name = params[:list][:name]
+    if @list.save
+      redirect_to list_path(@list) #50th
+    else
+      @lists = List.all
+      render :index
+    end
   end
 
   #mass assignment

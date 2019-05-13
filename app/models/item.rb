@@ -4,5 +4,14 @@ class Item < ApplicationRecord
     validates :description, presence: true, length: { minimum: 2 }
     validates :description, uniqueness: true
 
+
+    def complete?
+        self.status == 1
+    end
+
+    def incomplete?
+        self.status == 0
+    end
+
+
 end
- 

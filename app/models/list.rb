@@ -3,6 +3,7 @@ class List < ApplicationRecord
     has_many :items #adds methods to my model
     #validates :name, presence => true
     validates :name, presence: true, length: { minimum: 2 }
+    validates :name, uniqueness: true
 #validates :presence => :name
 end
 

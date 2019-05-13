@@ -20,4 +20,17 @@ class Item < ApplicationRecord
         #self.status == 0
     end
 
+    def complete!
+        self.status = STATUS[:complete]
+        self.save
+        #self.status == 0
+    end
+
+    def incomplete!
+        self.status = STATUS[:incomplete]
+        self.save
+        #self.status == 0
+    end
+
+
 end

@@ -3,16 +3,16 @@
         <h1>Your Lists</h1>
       <%= form_for(@list) do |f| %>
     <% @list.errors[:name].any? %>
-      <%= f.text_field :name, :class => "new-item", :placeholder => "create new list..." %>
+      <%= f.text_field :name, :class => "new-list", :placeholder => "create new list..." %>
      
       <%= f.submit :style => "display: none" %>
-
+<div>
     <ul>
         <% @list.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
+            <li><%= msg %></li>
+                 <% end %>
     </ul>
-    </div>
+</div>
          <%  end %>
 </form>
     </header>

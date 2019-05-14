@@ -4,7 +4,6 @@
       <%= form_for(@list) do |f| %>
     <% @list.errors[:name].any? %>
       <%= f.text_field :name, :class => "new-list", :placeholder => "create new list..." %>
-     
       <%= f.submit :style => "display: none" %>
 <div>
     <ul style="list-style: none;">

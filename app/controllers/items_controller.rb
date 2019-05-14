@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
   # end
 
 def update
+  #raise params.inspect
   #what do I want to update?
   @item = Item.find(params[:id])
   @item.update(item_params)

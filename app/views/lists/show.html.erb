@@ -4,7 +4,7 @@
         <%= form_for([@list, @item]) do |f| %>
         <%= f.text_field :description, :class => "new-item", :placeholder => (@item.errors.full_messages_for(:description).first || "add item...") %>
                 <%= f.submit :style => "display: none" %>
-        <% end %>
+                    <% end %>
 
         <input class="toggle-all" type="checkbox">
         <%if @item.errors.any? %>
@@ -12,21 +12,18 @@
             <h2>
                 <%= pluralize(@item.errors.count, "error") %>
                 prohibited this item from being saved:
+                <% @item.errors.full_messages.each do |msg| %>
             </h2>
-            <% @item.errors.full_messages.each do |msg| %>
             <ul style="list-style: none;">
                 <li><%= msg %></li>
                      <% end %>
-
             </ul>
-            <%  end %>
+                    <%  end %>
     </header>
     <section class="grocerylisterapp">
         <label for="toggle-all">Mark all as complete</label>
         <ul class="item-list" style="list-style: none;">
-            <% @list.items.each do |item| %>
-           <%= render :partial => "items/item_li", :locals => {}
-            <% end %>
+            <%= render :collection =>  @list.items, :partial => "items/item_li", :as => :item %>
         </ul>
     </section>
     <footer class="footer">

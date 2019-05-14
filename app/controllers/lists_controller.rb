@@ -2,16 +2,17 @@ class ListsController < ApplicationController
   def index
     @list = List.new
     @lists = List.all
+    # render 'lists/index.html.erb'
 #    raise @lists.inspect
     # implicit rendering
     # render 'site/index'
     # render 'controller/action'
-    # render 'lists/index.html.erb'
   end
 
   def show
     @list = List.find(params[:id])
-    @item = @list.items.build
+    @item = Item.new
+    #@item = @list.items.build #this was casing an error 22:00 v3
   end
 
   def create
@@ -31,6 +32,5 @@ class ListsController < ApplicationController
 private
   def list_params
     params.require(:list).permit(:name)
-      
   end
 end

@@ -2,9 +2,12 @@ class ItemsController < ApplicationController
   def create
     @list = List.find(params[:list_id]) #find parent
     @item = @list.items.build(item_params)
-    @item.save
+    if @item.save
     #raise params.inspect
     redirect_to list_path(@list)
+    else
+      render "lists/show"
+    end
   end
 
 
@@ -17,10 +20,23 @@ class ItemsController < ApplicationController
     #redirect_to item_path(@item)
   # end
 
+def update
+  #what do I want to update?
+  @item = Item.find(params[:id])
+  @item.update(item_params)
+
+  redirect_to list_path(@item.list)
+
+  # @item.status = params[:id][:status]
+  # @item.save
+end
+
+
+
 
 private
   def item_params
-  params.require(:item).permit(:description)
+  params.require(:item).permit(:description, :status)
   end
 
 end

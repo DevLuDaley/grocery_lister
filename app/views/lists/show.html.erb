@@ -1,34 +1,41 @@
-<body class="learn-bar">
+<section class="grocerylisterapp">
     <header class="header">
         <h1><%= @list.name%></h1>
         <%= form_for([@list, @item]) do |f| %>
         <%= f.text_field :description, :class => "new-item", :placeholder => "add item..." %>
         <%= f.submit :style => "display: none" %>
+        <% end %>
+
         <%if @item.errors.any? %>
         <div id="error_explanation">
             <h2>
                 <%= pluralize(@item.errors.count, "error") %>
-                prohibited this article from being saved:
+                prohibited this item from being saved:
             </h2>
             <% @item.errors.full_messages.each do |msg| %>
-            <ul>
+            <ul style="list-style: none;">
                 <li><%= msg %></li>
-                <li><%= hi %></li>
                 <% end %>
-                <% end %>
+
             </ul>
-        </div>
-        <%  end %>
+            <%  end %>
     </header>
     <section class="grocerylisterapp">
-        <ul class="item-list">
+        <input class="toggle-all" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul class="item-list" style="list-style: none;">
             <% @list.items.each do |item| %>
-            <li>
+            <li class="<%= 'completed' if item.complete? %>"></li>
                 <div class="view">
-                    <input class="toggle" type="checkbox">
+                    <%= form_for([@list, item]) do |f| %>
+                    <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
                     <label> <%= item.description %></label>
+                    <% end %>
                 </div>
-                <% end %>
             </li>
+            <% end %>
         </ul>
+    </section>
+    <footer class="footer">
+    </footer>
     </section>

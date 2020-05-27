@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
 #50th
     #redirect_to item_path(@item)
   # end
+# PATCH - /lists/:list_id/items/:id
 
 def update
   #raise params.inspect
@@ -32,6 +33,11 @@ def update
   # @item.save
 end
 
+def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to list_path(@item.list)
+  end
 
 
 

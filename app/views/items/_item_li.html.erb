@@ -3,7 +3,18 @@
         <%= form_for_item_status(item) do %>
         Rando text
     <% end %>
-    <label> <%= item.description %></label>
+    <label> <%= item.description %>  </label>
+
     <input type="submit" name="" id="">
-    </div>
+
+<form action="<%= list_item_path(item.list ,item)%>" method="post"/>
+<button type="submit" class="button"></button>
+
+<input type="hidden" name="_method" value="delete">
+<button class="close" </button>
+    <span class="close">x</span>
+</div>
+</form>
+
+
 <% end %>
